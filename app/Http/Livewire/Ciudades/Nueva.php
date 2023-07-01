@@ -30,7 +30,6 @@ class Nueva extends Component
                 $this->esNueva = false;
             } catch (\Throwable $th) {
                 $this->errorMessage = 'La ciudad solicitada no existe, intente crearla nuevamente.';
-                //session()->flash('errorMessage', 'La ciudad solicitada no existe, intente crearla nuevamente.');
             }
 
             try {
@@ -56,7 +55,6 @@ class Nueva extends Component
             $this->errorMessage = 'La provincia seleccionada no existe, intente <a href="' . route('nueva-provincia') . '">crearla</a> e intente nuevamente.';
             return;
         }
-        //dd($this->ciudad);
         $this->ciudad->provincias_id = $prov->id;
         $this->ciudad->save();
         session()->flash('message', 'La ciudad ' . $this->ciudad->descripcion . ' se creó correctamente.');
