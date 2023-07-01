@@ -30,19 +30,3 @@ Route::get('/ciudades/{idCiudad}', NuevaCiudad::class)->name('edita-ciudad');
 Route::get('/provincias', ListadoProvincias::class)->name('provincias');
 Route::get('/provincias/nueva', NuevaProvincia::class)->name('nueva-provincia');
 Route::get('/provincias/{idProvincia}', NuevaProvincia::class)->name('edita-provincia');
-
-Route::get('/test', function (){
-    $json = Storage::disk('local')->get('ciudadesProvincias.json');
-    $json = json_decode($json, true);
-
-    foreach($json as $provincias){
-        //$provincia = Provincia::create(['descripcion' => $provincias['nombre']]);
-        foreach ($provincias['ciudades'] as $ciudad) {
-            dd($ciudad['nombre']);
-            // Ciudad::create([
-            //     'provincias_id' => $provincia->id,
-            //     'descripcion' => $ciudad['nombre']
-            // ]);
-        }
-    }
-});
